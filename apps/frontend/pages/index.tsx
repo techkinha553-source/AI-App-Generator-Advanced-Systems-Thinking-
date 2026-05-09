@@ -178,7 +178,9 @@ export default function Home() {
       try {
         setLoading(true);
 
-        const response = await fetch(`${API_BASE}/config?appId=${activeAppId}`)
+        const response = await fetch(
+            `${API_BASE}/config?appId=${encodeURIComponent(activeAppId)}`
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch config");
