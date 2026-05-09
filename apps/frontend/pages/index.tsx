@@ -1,3 +1,6 @@
+const API_BASE =
+  process.env.NEXT_PUBLIC_BACKEND_URL ||
+  "https://ai-app-generator-advanced-systems-urn4.onrender.com";
 import { useEffect, useMemo, useState } from "react";
 import CSVUploader from "../components/CSVUploader";
 
@@ -175,9 +178,7 @@ export default function Home() {
       try {
         setLoading(true);
 
-        const response = await fetch(
-          `http://localhost:5050/config?appId=${activeAppId}`
-        );
+        const response = await fetch(`${API_BASE}/config?appId=${activeAppId}`)
 
         if (!response.ok) {
           throw new Error("Failed to fetch config");
@@ -195,7 +196,7 @@ export default function Home() {
 
     const loadApps = async () => {
       try {
-        const response = await fetch("http://localhost:5050/apps");
+        const response = await fetch(`${API_BASE}/apps`);
 
         const data = await response.json();
 
@@ -211,7 +212,7 @@ export default function Home() {
 
   const switchApp = async (appId: string) => {
     try {
-      await fetch(`http://localhost:5050/switch-app/${appId}`, {
+      await fetch(`${API_BASE}/switch-app/${appId}`, {
         method: "POST"
       });
 
@@ -267,7 +268,7 @@ export default function Home() {
         }
       };
 
-      const response = await fetch("http://localhost:5050/load-config", {
+      const response = await fetch(`${API_BASE}/load-config`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -284,7 +285,7 @@ export default function Home() {
 
       await switchApp(appId);
 
-      const appsResponse = await fetch("http://localhost:5050/apps");
+      const appsResponse = await fetch(`${API_BASE}/apps`)
       const appsData = await appsResponse.json();
 
       setApps(appsData?.apps || []);
@@ -497,7 +498,7 @@ export default function Home() {
               <CSVUploader
                 table="items"
                 onImportComplete={() => {
-                  fetch("http://localhost:5050/config")
+                  fetch(`${API_BASE}/config?appId=${activeAppId}`)
                     .then(res => res.json())
                     .then(data => setConfig(data.config || {}));
                 }}
