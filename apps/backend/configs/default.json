@@ -1,0 +1,26 @@
+{
+  "appName": "Demo App",
+  "pages": [
+    {
+      "type": "table",
+      "title": "Users",
+      "table": "students"
+    },
+    {
+      "type": "form",
+      "title": "Add User",
+      "table": "students"
+    }
+  ],
+  "db": {
+    "tables": [
+      {
+        "name": "students",
+        "fields": [
+          { "name": "name", "type": "text" },
+          { "name": "age", "type": "number" }
+        ]
+      }
+    ]
+  }
+}

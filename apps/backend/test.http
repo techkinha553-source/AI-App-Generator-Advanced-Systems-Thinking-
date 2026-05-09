@@ -1,0 +1,16 @@
+POST http://localhost:5050/load-config
+Content-Type: application/json
+
+{
+  "db": {
+    "tables": [
+      {
+        "name": "students",
+        "fields": [
+          { "name": "name", "type": "text" },
+          { "name": "email", "type": "text" }
+        ]
+      }
+    ]
+  }
+}

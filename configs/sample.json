@@ -1,0 +1,19 @@
+{
+  "appName": "Student App",
+  "auth": true,
+  "db": {
+    "tables": [
+      {
+        "name": "students",
+        "fields": {
+          "name": "string",
+          "age": "number"
+        }
+      }
+    ]
+  },
+  "ui": [
+    { "type": "form", "table": "students", "fields": ["name", "age"] },
+    { "type": "table", "table": "students" }
+  ]
+}

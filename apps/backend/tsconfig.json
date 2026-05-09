@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "../../",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "include": [
+    "src",
+    "../../packages/api-engine",
+    "../../packages/config-engine",
+    "../../packages/db-engine"
+  ]
+}
