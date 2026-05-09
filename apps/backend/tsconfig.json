@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2017",
     "module": "Node16",
     "rootDir": "../../",
     "outDir": "dist",
     "esModuleInterop": true,
-    "strict": true,
+    "strict": false,
     "moduleResolution": "node16",
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "types": ["node"],
+    "lib": ["ES2017"]
   },
   "include": [
     "src",
