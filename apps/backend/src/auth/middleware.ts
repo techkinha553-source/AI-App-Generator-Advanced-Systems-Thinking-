@@ -11,7 +11,7 @@ export function authMiddleware(
   next: NextFunction
 ) {
   try {
-    const authHeader = req.header("authorization");
+    const authHeader = req.headers["authorization"] as string | undefined;
 
     if (!authHeader) {
       return res.status(401).json({
@@ -20,7 +20,23 @@ export function authMiddleware(
       });
     }
 
-    const token = authHeader.split(" ")[1];
+    const parts = authHeader.split(" ");
+
+    if (parts.length !== 2 || parts[0] !== "Bearer") {
+      return res.status(401).json({
+        success: false,
+        error: "Invalid authorization format"
+      });
+    }
+
+    const token = parts[1];
+
+    if (!token) {
+      return res.status(401).json({
+        success: false,
+        error: "Token missing"
+      });
+    }
 
     const decoded = verifyToken(token);
 
@@ -30,7 +46,7 @@ export function authMiddleware(
   } catch (err) {
     return res.status(401).json({
       success: false,
-      error: "Invalid token"
+      error: "Invalid or expired token"
     });
   }
 }
