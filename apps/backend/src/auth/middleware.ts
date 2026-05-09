@@ -11,7 +11,7 @@ export function authMiddleware(
   next: NextFunction
 ) {
   try {
-    const authHeader = req.headers.authorization;
+    const authHeader = req.header("authorization");
 
     if (!authHeader) {
       return res.status(401).json({
