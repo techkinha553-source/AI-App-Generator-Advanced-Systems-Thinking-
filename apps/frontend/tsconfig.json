@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "jsx": "react-jsx",
+    "lib": ["dom", "esnext"],
+    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "bundler",
     "strict": true,
@@ -16,13 +13,9 @@
     "noEmit": true,
     "incremental": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "types": ["node"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
