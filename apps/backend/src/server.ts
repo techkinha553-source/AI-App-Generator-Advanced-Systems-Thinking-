@@ -320,7 +320,7 @@ app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
   sendError(res, 500, "Internal server error", err);
 });
 
-const PORT = 5050;
+const PORT = process.env.PORT || 5050;
 
 app.listen(PORT, () => {
   console.log(`Backend running on ${PORT}`);

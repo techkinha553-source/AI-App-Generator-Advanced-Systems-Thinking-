@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "commonjs",
+    "module": "Node16",
     "rootDir": "../../",
     "outDir": "dist",
     "esModuleInterop": true,
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node16",
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src",
